@@ -19,11 +19,11 @@ export const Single = () => {
     setItem(data);
   };
 
-  let content=''
+  let content='';
   if (params.thetype === "character") {
     content = (
-      <div className="row">
-        <div className="col">
+      <div className="row justify-content-center shadow border p-3">
+        <div className="col text-end">
           <img src={item.image} />
         </div>
         <div className="col">
@@ -37,7 +37,7 @@ export const Single = () => {
     );
   } else if (params.thetype === "episode") {
     content = (
-      <div>
+      <div className="shadow border p-3">
         <h2>{item.name}</h2>
         <p>Air date: {item.air_date}</p>
         <p>Episode: {item.episode}</p>
@@ -45,7 +45,7 @@ export const Single = () => {
     );
   } else if (params.thetype === "location") {
     content = (
-      <div>
+      <div className="shadow border p-3">
         <h2>{item.name}</h2>
         <p>Type: {item.type}</p>
         <p>Dimension: {item.dimension}</p>
@@ -54,14 +54,18 @@ export const Single = () => {
   }
 
   return (
-    <div className="jumbotron">
-      {content}
-
-      <Link to="/">
-        <span className="btn btn-primary btn-lg" role="button">
-          Back home
-        </span>
-      </Link>
+    <div className="d-flex flex-column align-items-center justify-content-center h-100">
+      <div className="container d-flex flex-column align-items-center justify-content-center mb-3">
+        {content}
+      </div>
+      <div className="d-flex justify-content-center">
+        <Link to="/">
+          <span className="btn btn-primary btn-lg" role="button">
+            Back home
+          </span>
+        </Link>
+      </div>
     </div>
   );
 };
+
