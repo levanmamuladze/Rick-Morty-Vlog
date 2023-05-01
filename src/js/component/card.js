@@ -18,20 +18,20 @@ export const Card = ({ item, cardType }) => {
       <div className="card-body">
   <h5 className="card-title ">{item.name}</h5>
   {cardType === "character" && (
-    <div className="card-text">
-      <p>{item.species}</p>
-      <p> {item.status}</p>
+    <div className="card-text no-box-shadow">
+      <p>Species: {item.species}</p>
+      <p>Gender: {item.gender}</p>
     </div>
   )}
   {cardType === "location" && (
-    <div className="card-text">
-      <p>{item.type}</p>
-      <p>{item.dimension}</p>
+    <div className="card-text no-box-shadow">
+      <p>Type: {item.type}</p>
+      <p>Dimension: {item.dimension}</p>
     </div>
   )}
   {cardType === "episode" && (
-    <div className="card-text">
-      <p>{item.episode}</p>
+    <div className="card-text no-box-shadow">
+      <p>Episode: {item.episode}</p>
     </div>
   )}
 </div>

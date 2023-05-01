@@ -19,19 +19,27 @@ export const Single = () => {
     setItem(data);
   };
 
-  let content='';
+  let content = "";
   if (params.thetype === "character") {
     content = (
       <div className="row justify-content-center shadow border p-3">
-        <div className="col text-end">
-          <img src={item.image} />
+        <div className="col-12 col-md-6 text-center">
+          <img src={item.image} className="img-fluid" />
         </div>
-        <div className="col">
-          <h2>{item.name}</h2>
-          <p>Status: {item.status}</p>
-          <p>Species: {item.species}</p>
-          <p>Type: {item.type}</p>
-          <p>Gender: {item.gender}</p>
+        <div className="col-12 col-md-6">
+          <h2  className="text-center text-md-start">{item.name}</h2>
+          <p className="text-center text-md-start">
+            Status: {item.species}
+          </p>
+          <p className="text-center text-md-start">
+            Species: {item.status}
+          </p>
+          {item.type && (
+            <p className="text-center text-md-start">Type: {item.type}</p>
+          )}
+          <p className="text-center text-md-start">
+            Gender: {item.gender}
+          </p>
         </div>
       </div>
     );
@@ -54,18 +62,17 @@ export const Single = () => {
   }
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center h-100">
+    <div className="d-flex flex-column align-items-center justify-content-center ">
       <div className="container d-flex flex-column align-items-center justify-content-center mb-3">
         {content}
       </div>
       <div className="d-flex justify-content-center">
         <Link to="/">
-          <span className="btn btn-primary btn-lg" role="button">
+          <button className="btn btn-primary btn-lg" role="button">
             Back home
-          </span>
+          </button>
         </Link>
       </div>
     </div>
   );
 };
-

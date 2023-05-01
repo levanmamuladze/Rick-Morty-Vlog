@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       characters: [],
       locations: [],
       episodes: [],
-      favorites: [],
+      favorites: JSON.parse(localStorage.getItem('favorites')) || [],
     },
     actions: {
       getAllCharacters: async () => {
@@ -29,14 +29,17 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ locations: data.results });
       },
       setFavorites: (newFav) => {
-        const favorites = getStore().favorites;
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      
         if (!favorites.includes(newFav)) {
-          setStore({ favorites: [...favorites, newFav] });
+          favorites.push(newFav);
         } else {
-          setStore({
-            favorites: favorites.filter((oldFav) => oldFav != newFav),
-          });
+          favorites.splice(favorites.indexOf(newFav), 1);
         }
+      
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        setStore({ favorites });
+      
       },
     },
   };
