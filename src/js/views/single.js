@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 
+
 export const Single = () => {
   const { store, actions } = useContext(Context);
   const params = useParams();
@@ -67,8 +68,8 @@ if (params.thetype === "character") {
   
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center h-100">
-      <div className=" d-flex flex-column align-items-center justify-content-center mb-3 ">
+    <div className="d-flex flex-column align-items-center justify-content-center ">
+      <div className=" d-flex flex-column mx-auto mb-3 ">
         {content}
       </div>
       <div className="d-flex justify-content-center">
