@@ -46,7 +46,7 @@ export const Navbar = () => {
                         >
                           <p className="text-decoration-underline">{fav}</p>
                           <button
-                            className="bg-danger"
+                            
                             onClick={(event) => {
                               event.stopPropagation();
                               actions.setFavorites(fav);

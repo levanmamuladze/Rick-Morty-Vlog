@@ -1,4 +1,5 @@
 .btn.active {
-    border: none;
-    text-decoration: underline;
-  }
+  border: none;
+  
+  text-shadow: 4px 4px 0 #0e0e0e, -4px -4px 0 #0d0d0d, 4px -4px 0 #070707, -4px 4px 0 #0e0e0e;
+}
