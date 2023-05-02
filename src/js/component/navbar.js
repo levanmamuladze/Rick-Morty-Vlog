@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import rickandmortyicon18 from "/workspaces/Rick-Morty-Vlog/src/img/rick-and-morty-icon-18.jpg";
+import "/workspaces/Rick-Morty-Vlog/src/styles/navbar.css";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light mb-3">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light ">
+      <div className="container">
         <Link to="/">
-          <span className="navbar-brand mb-0 h1">Rick&Morty</span>
+          <span className="navbar-brand mb-0 ">
+          <img className="ioulios" src={rickandmortyicon18} alt="Rick and Morty Icon" /></span>
         </Link>
         <button
           className="navbar-toggler"
