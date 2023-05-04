@@ -25,9 +25,10 @@ export const Home = () => {
     retrieveNewData(selectedOption?.value || ""); // Retrieve new data based on the selected option value (if it exists)
   };
 
-  const handleClearSearch = () => {
-    setSearchQuery(""); // Clear the search query and selected option when the search input is cleared
+  const handleClearSearch = (e) => {
+    setSearchQuery(e); // Clear the search query and selected option when the search input is cleared
     setSelectedOption(null);
+    
   };
 
   const retrieveNewData = (data) => {
