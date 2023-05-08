@@ -9,15 +9,13 @@ background-blend-mode: color-dodge, overlay, difference, difference, normal;
 .no-box-shadow {
   box-shadow: none !important;
 }
-.react-select-container {
+.search-bar {
   width: 200px; /* or any other fixed width you want */
 }
 
-.react-select__input {
+.search-bar input {
   font-size: 16px; /* or any other font size you want */
 }
 
-.react-select__placeholder {
-  color: gray; /* or any other color you want */
-}
+
 

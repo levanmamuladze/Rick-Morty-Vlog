@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Card } from "../component/card"; // Importing a custom Card component
 import { Context } from "../store/appContext"; // Importing a custom Context provider
-import Select from "react-select"; // Importing a third-party Select component
 import "/workspaces/Rick-Morty-Vlog/src/styles/index.css"; // Importing some CSS styles
 
 export const Home = () => {
@@ -18,37 +17,17 @@ export const Home = () => {
   const handleFilterChange = (filter) => {
     setSelectedFilter(filter); // Update the selected filter when a new filter is clicked
   };
-
-  const handleOptionSelected = (selectedOption) => {
-    setSelectedOption(selectedOption); // Update the selected option when a new option is selected
-    setSearchQuery(selectedOption ? selectedOption.label : ""); // Update the search query with the selected option label (if it exists)
-    retrieveNewData(selectedOption?.value || ""); // Retrieve new data based on the selected option value (if it exists)
-  };
-
-  const handleClearSearch = (e) => {
-    setSearchQuery(e); // Clear the search query and selected option when the search input is cleared
-    setSelectedOption(null);
-    
-  };
-
   const retrieveNewData = (data) => {
     const newData = store[selectedFilter].filter((item) =>
       item.name.toLowerCase().includes(data.toLowerCase()) // Filter the items based on the search query (case-insensitive)
     );
     setFilteredItems(newData); // Update the filtered items with the new data
   };
-
   const cardTypeMap = {
     characters: "character", // Map the "characters" filter to "character" card type
     episodes: "episode", // Map the "episodes" filter to "episode" card type
     locations: "location", // Map the "locations" filter to "location" card type
   };
-
-  const options = store[selectedFilter].map((item) => ({
-    value: item.name.toLowerCase(), // Use the item's name as the value
-    label: item.name, // Use the item's name as the label
-  }));
-
   const filteredCards = searchQuery
     ? filteredItems.filter((item) =>
         item.name.toLowerCase().includes(searchQuery.toLowerCase()) // Filter the items based on the search query (case-insensitive)
@@ -92,18 +71,20 @@ export const Home = () => {
             Locations
           </button>
         </div>
-        <div className="input-group my-3 justify-content-end">
-          <Select
-            className="react-select-container"
-            classNamePrefix="react-select"
-            isClearable={true}
-            options={options}
-            value={selectedOption}
-            onInputChange={handleClearSearch}
-            onChange={handleOptionSelected}
-            placeholder={"Search by name"}
-          />
-        </div>
+        <div className="input pe-2 my-3 ms-auto seach-bar">
+        <input
+    type="text"
+    className="form-control "
+    placeholder={`Search ${selectedFilter}`}
+    aria-label={`Search ${selectedFilter}`}
+    value={searchQuery}
+    onChange={(e) => {
+      setSearchQuery(e.target.value);
+      setSelectedOption(null);
+      retrieveNewData(e.target.value);
+    }}
+  />
+      </div>
       </div>
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
         {filteredCards.map((item) => (
@@ -113,5 +94,6 @@ export const Home = () => {
         ))}
       </div>
     </div>
+    
   );
 }; 

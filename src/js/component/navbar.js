@@ -25,7 +25,7 @@ export const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse pe-2" id="navbarNav">
           <div className="navbar-nav ms-auto">
             <div className="dropdown ">
               <button
