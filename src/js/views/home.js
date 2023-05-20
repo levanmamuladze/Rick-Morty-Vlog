@@ -35,8 +35,8 @@ export const Home = () => {
     : filteredItems;
   return (
     <div className="container main">
-      <div className="d-flex flex-column flex-sm-row">
-        <div className="btn-group text-start">
+      <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between">
+        <div className="btn-group text-start mb-3 mb-sm-0 ">
           <button
             className={`btn ${
               selectedFilter === "characters"
@@ -71,22 +71,22 @@ export const Home = () => {
             Locations
           </button>
         </div>
-        <div className="input pe-2 my-3 ms-auto seach-bar">
-        <input
-    type="text"
-    className="form-control "
-    placeholder={`Search ${selectedFilter}`}
-    aria-label={`Search ${selectedFilter}`}
-    value={searchQuery}
-    onChange={(e) => {
-      setSearchQuery(e.target.value);
-      setSelectedOption(null);
-      retrieveNewData(e.target.value);
-    }}
-  />
+        <div className="input-group search-bar">
+          <input
+            type="text"
+            className="form-control"
+            placeholder={`Search ${selectedFilter}`}
+            aria-label={`Search ${selectedFilter}`}
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setSelectedOption(null);
+              retrieveNewData(e.target.value);
+            }}
+          />
+        </div>
       </div>
-      </div>
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 pt-3">
         {filteredCards.map((item) => (
           <div key={item.id}>
             <Card item={item} cardType={cardTypeMap[selectedFilter]} />
@@ -94,6 +94,5 @@ export const Home = () => {
         ))}
       </div>
     </div>
-    
   );
-}; 
+};
